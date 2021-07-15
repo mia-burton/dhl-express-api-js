@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios'
-import { Auth } from './interfaces/auth'
-import { ShipmentRequestBody } from './interfaces/shipment-request.body'
+import { Auth } from './types/auth'
+import { ShipmentRequestBody } from './types/shipment-request.body'
 
 export class DHLExpress {
   private readonly baseUrl: string
@@ -12,10 +12,10 @@ export class DHLExpress {
     this.baseUrl = baseUrl
   }
 
-  public async sendShipmentRequest(body : ShipmentRequestBody) :Promise<AxiosResponse> {
+  public async sendShipmentRequest(request : ShipmentRequestBody) :Promise<AxiosResponse> {
     const url = `${this.baseUrl}/ShipmentRequest`
     try {
-      const resp = await axios.post(url, JSON.stringify(body), this.axiosConfig)
+      const resp = await axios.post(url, JSON.stringify(request), this.axiosConfig)
       return resp
     } catch (error) {
       return new Promise((resolve) => resolve(error.response))

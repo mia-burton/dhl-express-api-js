@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 import { Auth } from './types/auth'
 import { ShipmentRequestBody } from './types/shipment-request.body'
+import { ShipmentResponseBody } from './types/shipment-response.body'
 
 export class DHLExpress {
   private readonly TEST_BASE_URL = 'https://wsbexpress.dhl.com/rest/sndpt'
@@ -9,19 +10,20 @@ export class DHLExpress {
   private readonly baseUrl: string
   private readonly axiosConfig: Object
 
-  constructor(auth: Auth, liveEnv: boolean) {
+  constructor(auth: Auth, testEnv: boolean) {
     const headers = { 'Content-Type': 'application/json' }
     this.axiosConfig = { headers: headers, auth: auth }
     this.baseUrl = this.LIVE_BASE_URL
-    if (!liveEnv)
+    if (testEnv)
       this.baseUrl = this.TEST_BASE_URL
   }
 
-  public async sendShipmentRequest(request : ShipmentRequestBody) :Promise<AxiosResponse> {
+  public async sendShipmentRequest(request : ShipmentRequestBody) :Promise<ShipmentResponseBody> {
     const url = `${this.baseUrl}/ShipmentRequest`
     try {
       const resp = await axios.post(url, JSON.stringify(request), this.axiosConfig)
-      return resp
+      const shipmentResponseBody = new ShipmentResponseBody(JSON.stringify(resp.data)).parse()
+      return shipmentResponseBody
     } catch (error) {
       return new Promise((resolve) => resolve(error.response))
     }

@@ -2,13 +2,12 @@ import { LooseObject } from "./loose-object"
 
 export class ShipmentResponseBody {
   shipmentResponse: ShipmentResponse | undefined
-  dhlBodyResponse: string
   constructor(dhlBodyResponse: string) {
-    this.dhlBodyResponse = dhlBodyResponse
+    this.shipmentResponse = this.parse(dhlBodyResponse).shipmentResponse
   }
 
-  parse(): ShipmentResponseBody {
-    return JSON.parse(this.dhlBodyResponse, function(_key, value) {
+  private parse(dhlBodyResponse: string): ShipmentResponseBody {
+    return JSON.parse(dhlBodyResponse, function(_key, value) {
       if (value && typeof value === 'object') {
         var replacement: LooseObject = {}
         for (var v in value) {

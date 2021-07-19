@@ -22,7 +22,7 @@ export class DHLExpress {
     const url = `${this.baseUrl}/ShipmentRequest`
     try {
       const resp = await axios.post(url, JSON.stringify(request), this.axiosConfig)
-      const shipmentResponseBody = new ShipmentResponseBody(JSON.stringify(resp.data)).parse()
+      const shipmentResponseBody = new ShipmentResponseBody(JSON.stringify(resp.data))
       return shipmentResponseBody
     } catch (error) {
       return new Promise((resolve) => resolve(error.response))

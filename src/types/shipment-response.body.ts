@@ -35,7 +35,7 @@ export interface ShipmentResponse {
 
 export interface NotificationEntity {
   code: string
-  message?: null
+  message?: string
 }
 
 export interface PackagesResult {

@@ -31,5 +31,5 @@ export interface PickUpResponse {
 }
 export interface NotificationEntity {
   code: string
-  message?: null
+  message?: string
 }

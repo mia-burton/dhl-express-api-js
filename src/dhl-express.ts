@@ -1,5 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 import { Auth } from './types/auth'
+import { PickupRequestBody } from './types/pickup-request.body'
+import { PickupResponseBody } from './types/pickup-response.body'
 import { ShipmentRequestBody } from './types/shipment-request.body'
 import { ShipmentResponseBody } from './types/shipment-response.body'
 
@@ -24,6 +26,17 @@ export class DHLExpress {
       const resp = await axios.post(url, JSON.stringify(request), this.axiosConfig)
       const shipmentResponseBody = new ShipmentResponseBody(JSON.stringify(resp.data))
       return shipmentResponseBody
+    } catch (error) {
+      return new Promise((resolve) => resolve(error.response))
+    }
+  }
+
+  public async sendPickupRequest(request : PickupRequestBody) :Promise<PickupResponseBody> {
+    const url = `${this.baseUrl}/PickupRequest`
+    try {
+      const resp = await axios.post(url, JSON.stringify(request), this.axiosConfig)
+      const pickupResponseBody = new PickupResponseBody(JSON.stringify(resp.data))
+      return pickupResponseBody
     } catch (error) {
       return new Promise((resolve) => resolve(error.response))
     }

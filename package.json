@@ -1,17 +1,23 @@
 {
-  "name": "dhl-express-api-js",
-  "version": "1.0.0",
+  "name": "@mia-burton/dhl-express-api-js",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "test": "jest --config src/jest.config.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Mia Burton",
+  "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^26.0.3",
+    "jest": "^26.6.3",
+    "moxios": "^0.4.0",
+    "nock": "^13.1.1",
     "nodemon": "^2.0.12",
+    "ts-jest": "^26.1.1",
     "ts-node": "^10.1.0",
     "typescript": "^4.3.5"
   },

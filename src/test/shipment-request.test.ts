@@ -14,5 +14,6 @@ describe('Shipment Request test', function() {
     const dhl = new DHLExpress( { username: 'testuser', password: 'testpsw' }, true)
     const resp = await dhl.sendShipmentRequest(new ShipmentRequestBody(getTestShipmentRequest()))
     expect(resp.shipmentResponse).toHaveProperty('labelImage')
+    expect(resp.shipmentResponse?.labelImage).not.toBeNull()
   })
 })

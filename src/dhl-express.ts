@@ -27,7 +27,7 @@ export class DHLExpress {
       const shipmentResponseBody = new ShipmentResponseBody(JSON.stringify(resp.data))
       return shipmentResponseBody
     } catch (error) {
-      return new Promise((resolve) => resolve(error.response))
+      throw new Error(`Request failed with status: ${error.response.statusText}`)
     }
   }
 
@@ -38,7 +38,7 @@ export class DHLExpress {
       const pickupResponseBody = new PickupResponseBody(JSON.stringify(resp.data))
       return pickupResponseBody
     } catch (error) {
-      return new Promise((resolve) => resolve(error.response))
+      throw new Error(`Request failed with status: ${error.response.statusText}`)
     }
   }
 }

@@ -36,11 +36,14 @@ export class DHLExpress {
   public async sendShipmentRequest(request : ShipmentRequestBody) :Promise<ShipmentResponseBody> {
     const url = `${this.baseUrl}/ShipmentRequest`
     try {
-      const resp = await axios.post(url, JSON.stringify(request), this.axiosConfig)
+      const resp = await axios.post(url, request.toDHLBody(), this.axiosConfig)
       const shipmentResponseBody = new ShipmentResponseBody(JSON.stringify(resp.data))
       return shipmentResponseBody
     } catch (error) {
-      throw new DHLExpressError(error.response.status, error.response.statusText)
+      if (error.response) {
+        throw new DHLExpressError(error.response.status, error.response.statusText)
+      }
+      throw new DHLExpressError(0, error.message)
     }
   }
 
@@ -53,11 +56,14 @@ export class DHLExpress {
   public async sendPickupRequest(request : PickupRequestBody) :Promise<PickupResponseBody> {
     const url = `${this.baseUrl}/PickupRequest`
     try {
-      const resp = await axios.post(url, JSON.stringify(request), this.axiosConfig)
+      const resp = await axios.post(url, request.toDHLBody(), this.axiosConfig)
       const pickupResponseBody = new PickupResponseBody(JSON.stringify(resp.data))
       return pickupResponseBody
     } catch (error) {
-      throw new DHLExpressError(error.response.status, error.response.statusText)
+      if (error.response) {
+        throw new DHLExpressError(error.response.status, error.response.statusText)
+      }
+      throw new DHLExpressError(0, error.message)
     }
   }
 }

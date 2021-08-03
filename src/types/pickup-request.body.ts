@@ -8,7 +8,7 @@ export class PickupRequestBody {
 
   toDHLBody() {
     return JSON.stringify(this, function(_key, value) {
-      if (value && typeof value === 'object') {
+      if (value && typeof value === 'object' && !Array.isArray(value)) {
         var replacement: LooseObject = {}
         for (var v in value) {
           if (Object.hasOwnProperty.call(value, v)) {

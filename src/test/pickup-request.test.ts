@@ -1,4 +1,4 @@
-import DHLExpress from '..';
+import { DHLExpress } from '..';
 import * as nock from 'nock'
 import { PickupRequestBody } from '../types/pickup-request.body';
 import { getTestPickupRequest, getTestPickupResponse } from './test_data/pickup-request.test.data';

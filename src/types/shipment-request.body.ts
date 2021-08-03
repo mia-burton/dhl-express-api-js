@@ -8,8 +8,8 @@ export class ShipmentRequestBody {
   }
 
   toDHLBody() {
-    return JSON.stringify(this, function(_key, value) {
-      if (value && typeof value === 'object') {
+    return JSON.stringify(this.shipmentRequest, function(_key, value) {
+      if (value && typeof value === 'object' && !Array.isArray(value)) {
         var replacement: LooseObject = {}
         for (var v in value) {
           if (Object.hasOwnProperty.call(value, v)) {

@@ -1,4 +1,4 @@
-import DHLExpress from '..';
+import { DHLExpress } from '..';
 import * as nock from 'nock'
 import { ShipmentRequestBody } from '../types/shipment-request.body';
 import { getTestShipmentRequest, getTestShipmentResponse } from './test_data/shipment-request.test.data';

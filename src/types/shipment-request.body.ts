@@ -47,6 +47,10 @@ export interface ShipmentInfo {
   account: number
   currency: string
   unitOfMeasurement: string
+  paperlessTradeEnabled?: boolean
+  billing?: Billing
+  documentImages?: DocumentImages
+  specialServices?: SpecialServices
 }
 
 export interface InternationalDetail {
@@ -55,11 +59,11 @@ export interface InternationalDetail {
 }
 
 export interface Commodities {
-  numberOfPieces: number
+  numberOfPieces?: number
   description: string
-  countryOfManufacture: string
-  quantity: number
-  unitPrice: number
+  countryOfManufacture?: string
+  quantity?: number
+  unitPrice?: number
   customsValue: number
 }
 
@@ -109,4 +113,27 @@ export interface Dimensions {
   length: number
   width: number
   height: number
+}
+
+export interface Billing {
+  shipperAccountNumber: string
+  shippingPaymentType: string
+}
+
+export interface DocumentImages {
+  documentImage: (DocumentImage)[] | null
+}
+
+export interface DocumentImage {
+  documentImageType: string
+  documentImage: string
+  documentImageFormat: string
+}
+
+export interface SpecialServices {
+  Service?: (ServiceEntity)[] | null
+}
+
+export interface ServiceEntity {
+  ServiceType: string
 }

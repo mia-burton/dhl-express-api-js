@@ -8,7 +8,7 @@ import { ShipmentResponseBody } from './types/shipment-response.body'
 
 export class DHLExpress {
   private readonly TEST_BASE_URL = 'https://wsbexpress.dhl.com/rest/sndpt'
-  private readonly LIVE_BASE_URL = ''
+  private readonly LIVE_BASE_URL = 'https://wsbexpress.dhl.com/rest/gbl'
 
   private readonly baseUrl: string
   private readonly axiosConfig: Object

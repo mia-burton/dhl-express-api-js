@@ -117,6 +117,7 @@ export interface Dimensions {
 
 export interface Billing {
   shipperAccountNumber: string
+  billingAccountNumber: string
   shippingPaymentType: string
 }
 

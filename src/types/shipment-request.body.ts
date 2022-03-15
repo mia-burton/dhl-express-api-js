@@ -118,7 +118,8 @@ export interface Dimensions {
 export interface Billing {
   shipperAccountNumber: string
   billingAccountNumber: string
-  shippingPaymentType: string
+  shippingPaymentType?: string
+  dutyAndTaxPayerAccountNumber?: string
 }
 
 export interface DocumentImages {
@@ -137,4 +138,11 @@ export interface SpecialServices {
 
 export interface ServiceEntity {
   ServiceType: string
+  ServiceValue?: number
+  CurrencyCode?: string
+  PaymentMethods?: (PaymentMethods)[] | null
+}
+
+export interface PaymentMethods {
+  PaymentMethod: string
 }

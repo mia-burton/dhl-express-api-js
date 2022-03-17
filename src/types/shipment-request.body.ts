@@ -64,7 +64,7 @@ export interface Commodities {
   countryOfManufacture?: string
   quantity?: number
   unitPrice?: number
-  customsValue: number
+  customsValue: string | number
 }
 
 export interface Ship {
@@ -80,7 +80,7 @@ export interface Shipper {
 export interface Contact {
   personName: string
   companyName: string
-  phoneNumber: number
+  phoneNumber: string | number
   emailAddress: string
 }
 
@@ -94,7 +94,7 @@ export interface Address {
   streetLines: string
   city: string
   stateOrProvinceCode?: string
-  postalCode: number
+  postalCode: string | number
   countryCode: string
 }
 
@@ -133,16 +133,16 @@ export interface DocumentImage {
 }
 
 export interface SpecialServices {
-  Service?: (ServiceEntity)[]
+  service?: (ServiceEntity)[]
 }
 
 export interface ServiceEntity {
-  ServiceType: string
-  ServiceValue?: number
-  CurrencyCode?: string
-  PaymentMethods?: (PaymentMethods)[]
+  serviceType: string
+  serviceValue?: number
+  currencyCode?: string
+  paymentMethods?: (PaymentMethods)[]
 }
 
 export interface PaymentMethods {
-  PaymentMethod: string
+  paymentMethod: string
 }

@@ -4,7 +4,7 @@ export function getTestShipmentRequest() {
       shipmentInfo: {
         dropOffType: "REGULAR_PICKUP",
         serviceType: "P",
-        account: 123456789,
+        account: "123456789",
         currency: "SGD",
         unitOfMeasurement: "SI",
       },
@@ -17,7 +17,7 @@ export function getTestShipmentRequest() {
           countryOfManufacture: "CN",
           quantity: 1,
           unitPrice: 5,
-          customsValue: 10,
+          customsValue: "10",
         },
         content: "NON_DOCUMENTS",
       },

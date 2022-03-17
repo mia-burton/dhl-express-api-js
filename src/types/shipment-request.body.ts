@@ -44,7 +44,7 @@ export interface RequestedShipment {
 export interface ShipmentInfo {
   dropOffType: string
   serviceType: string
-  account: number
+  account?: string
   currency: string
   unitOfMeasurement: string
   paperlessTradeEnabled?: boolean
@@ -133,14 +133,14 @@ export interface DocumentImage {
 }
 
 export interface SpecialServices {
-  Service?: (ServiceEntity)[] | null
+  Service?: (ServiceEntity)[]
 }
 
 export interface ServiceEntity {
   ServiceType: string
   ServiceValue?: number
   CurrencyCode?: string
-  PaymentMethods?: (PaymentMethods)[] | null
+  PaymentMethods?: (PaymentMethods)[]
 }
 
 export interface PaymentMethods {
